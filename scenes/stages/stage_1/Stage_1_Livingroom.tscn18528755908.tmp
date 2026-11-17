@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cnemwx4cgqj7h"]
+
+[ext_resource type="PackedScene" uid="uid://d0165n5chgjjg" path="res://UI/HUD.tscn" id="1_bg6r4"]
+[ext_resource type="Script" uid="uid://c0k7cyoiyy3i" path="res://scripts/scene_scripts/stages/stage_1_scipts/stage_1_livingroom.gd" id="1_jwwax"]
+[ext_resource type="PackedScene" uid="uid://1p8gp08roele" path="res://scenes/player/Player.tscn" id="2_jwwax"]
+[ext_resource type="PackedScene" uid="uid://cq801bd4oqklp" path="res://scenes/Door/Door.tscn" id="4_sromt"]
+
+[node name="Stage1Livingroom" type="Node2D" unique_id=463357646]
+script = ExtResource("1_jwwax")
+
+[node name="Hud" parent="." unique_id=555335849 instance=ExtResource("1_bg6r4")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1007661539]
+position = Vector2(576, 323)
+
+[node name="Player" parent="." unique_id=1365855226 instance=ExtResource("2_jwwax")]
+position = Vector2(1085, 500)
+
+[node name="Door_1" parent="." unique_id=545505144 instance=ExtResource("4_sromt")]
+position = Vector2(1152, 500)

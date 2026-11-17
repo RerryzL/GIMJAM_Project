@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://1p8gp08roele"]
+
+[ext_resource type="Script" uid="uid://0j8cm6428v0o" path="res://scripts/scene_scripts/player_scripts/Player.gd" id="1_gfjak"]
+[ext_resource type="Texture2D" uid="uid://dyop1kcqhw2fc" path="res://icon.svg" id="1_wr5hl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5h11f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wr5hl")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bx8n8"]
+radius = 51.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1365855226 groups=["player"]]
+script = ExtResource("1_gfjak")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=318297340]
+sprite_frames = SubResource("SpriteFrames_5h11f")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1485095517]
+shape = SubResource("CircleShape2D_bx8n8")

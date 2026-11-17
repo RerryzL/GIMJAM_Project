@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://d0165n5chgjjg"]
+
+[ext_resource type="Script" uid="uid://cn4afl2kvmbv3" path="res://scripts/UI_scripts/Hud.gd" id="1_yixhe"]
+
+[sub_resource type="Animation" id="Animation_yixhe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer/LeftTopContainer/RoomLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ijstf"]
+resource_name = "label_fade"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer/LeftTopContainer/RoomLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4n7mi"]
+_data = {
+&"RESET": SubResource("Animation_yixhe"),
+&"label_fade": SubResource("Animation_ijstf")
+}
+
+[node name="Hud" type="CanvasLayer" unique_id=555335849]
+script = ExtResource("1_yixhe")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1902046518]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer" unique_id=2060350502]
+libraries/ = SubResource("AnimationLibrary_4n7mi")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1682281698]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="LeftTopContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=2117641847]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="RoomLabelTimer" type="Timer" parent="MarginContainer/HBoxContainer/LeftTopContainer" unique_id=107563769]
+wait_time = 3.0
+one_shot = true
+
+[node name="RoomLabel" type="Label" parent="MarginContainer/HBoxContainer/LeftTopContainer" unique_id=1184404261]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "CURRENT ROOM"
+
+[node name="RightTopContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=967491262]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+alignment = 2
+
+[node name="Setting" type="Button" parent="MarginContainer/HBoxContainer/RightTopContainer" unique_id=157992293]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 32
+text = "SETTING"
+
+[connection signal="timeout" from="MarginContainer/HBoxContainer/LeftTopContainer/RoomLabelTimer" to="." method="_on_room_label_timer_timeout"]

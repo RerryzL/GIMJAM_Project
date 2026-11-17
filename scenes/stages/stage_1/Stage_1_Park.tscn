@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://ffgj8wpagt5s"]
+
+[ext_resource type="PackedScene" uid="uid://d0165n5chgjjg" path="res://UI/HUD.tscn" id="1_cyxmg"]
+[ext_resource type="Script" uid="uid://3kx2yu1hw5ww" path="res://scripts/task_scripts/Stage_1_Park.gd" id="1_lhp6d"]
+[ext_resource type="PackedScene" uid="uid://douog27oefphu" path="res://UI/Room_Transition.tscn" id="2_ofxl3"]
+[ext_resource type="PackedScene" uid="uid://1p8gp08roele" path="res://scenes/player/Player.tscn" id="3_lhp6d"]
+[ext_resource type="PackedScene" uid="uid://cq801bd4oqklp" path="res://scenes/Door/Door.tscn" id="4_lbyuj"]
+[ext_resource type="Texture2D" uid="uid://dyop1kcqhw2fc" path="res://icon.svg" id="5_ofxl3"]
+
+[node name="Stage1Park" type="Node2D" unique_id=586523869]
+script = ExtResource("1_lhp6d")
+
+[node name="Hud" parent="." unique_id=555335849 instance=ExtResource("1_cyxmg")]
+
+[node name="RoomTransition" parent="." unique_id=1151096404 instance=ExtResource("2_ofxl3")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=549405374]
+position = Vector2(576, 325)
+
+[node name="Player" parent="." unique_id=1365855226 instance=ExtResource("3_lhp6d")]
+position = Vector2(140, 325)
+
+[node name="Door" parent="." unique_id=545505144 instance=ExtResource("4_lbyuj")]
+position = Vector2(0, 325)
+
+[node name="Sprite2D" type="Sprite2D" parent="Door" unique_id=1397747920]
+modulate = Color(1, 1, 1, 0.36862746)
+texture = ExtResource("5_ofxl3")
